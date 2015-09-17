@@ -11,6 +11,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.min.css">
 </head>
 <body>
 	<nav class="navbar base-verde">
@@ -58,18 +59,21 @@
  				<div class="col-md-3 div-form-reg">
  					<!-- Form para registro de tickets -->
 
-						<form class="form-reg">
+						<form class="form-reg" id="agregarTickets">
 						  <div class="form-group">
 						    <label>Titulo del ticket</label>
-						    <input type="text" class="form-control input-sm" id="" placeholder="Nombre">
+						    <!-- nombre que se le va a dar al ticket -->
+						    <input type="text" class="form-control input-sm" id="nomTicket" placeholder="Nombre">
 						  </div>
 						  <div class="form-group">
 						    <label>Descripcion</label>
-						    <textarea class="form-control input-sm" placeholder="descripcion"></textarea>
+						    <!-- descripcion del ticket -->
+						    <textarea class="form-control input-sm" placeholder="descripcion" id="descTicket"></textarea>
 						  </div>
 						  <div cprimerlass="form-group">
 						    <label>Tipo del ticket</label>
-						    <select class="form-control input-sm">
+						    <!-- tipo de ticket -->
+						    <select class="form-control input-sm" id="tipoTicket">
 						    	<option>Primer tipo</option>
 						    	<option>Segundo tipo</option>
 						    	<option>Tercer tipo</option>
@@ -77,6 +81,7 @@
 						  </div>
 						  <div class="form-group">
 						    <label>Prioridad</label>
+						    <!-- Prioridad del ticket -->
 						    <select class="form-control input-sm">
 						    	<option>Baja</option>
 						    	<option>Media</option>
@@ -92,7 +97,7 @@
  				<div class="col-md-8">
  					<!-- caja del crud -->
  						<div class="cruds">
- 							<table class="table">
+ 							<table class="table" id="tablaTicket">
  								<thead>
  									<tr>
  										<td>ID</td>
@@ -247,10 +252,101 @@
  				</div>	
     		</div>
   		</div>
+  		<!-- inicia la ventana para la administracion de grupos -->
   		<div id="grupos" class="tab-pane fade">
-    		<h3>Menu 2</h3>
-    		<p>Some content in menu 2.</p>
+			<div class="row">
+ 				<div class="col-md-3 div-form-reg">
+ 					<!-- Form para registro de tickets -->
+
+						<form class="form-reg">
+						  <div class="form-group">
+						    <label>Nombre del Grupo</label>
+						    <input type="text" class="form-control input-sm" id="" placeholder="Nombre">
+						  </div>
+						  <div class="form-group">
+						    <label>Descripcion del grupo</label>
+						    <textarea class="form-control input-sm" id="">Descripcion</textarea>
+						  </div>
+						  <div class="form-group">
+						    <label>Usuarios del grupo</label>
+						    <select class="form-control input-sm" id="selUsuario">
+						    	<option value="2">Usuario 1</option>
+						    	<option>Usuario 2</option>
+						    	<option>Usuario 3</option>
+						    </select>
+						    <input type="button" id="agregar" class="btn btn-default" value="agregar al grupo">
+						  </div>
+						  <div class="form-group">
+ 							<ul id="listaUsuarios"></ul>
+						  </div>
+						  <button type="submit" class="btn btn-default">Guardar</button>
+						  <button type="submit" class="btn btn-default">Limpiar</button>
+						</form>
+
+ 					<!-- Fin form para registro de tickets -->
+ 				</div>
+ 				<div class="col-md-8">
+ 					<!-- caja del crud -->
+ 						<div class="cruds">
+ 							<table class="table">
+ 								<thead>
+ 									<tr>
+ 										<td>ID</td>
+ 										<td>Nombre</td>
+ 										<td>Apellido Paterno</td>
+ 										<td>Apellido Materno</td>
+ 										<td>Informacion</td>
+ 										<td>Acciones</td>
+ 									</tr>
+ 								</thead>
+ 								<tbody>
+ 									<tr>
+ 										<td>1</td>
+ 										<td>lorem</td>
+ 										<td>lorem</td>
+ 										<td>media</td>
+ 										<td>
+ 											<a href="" data-toggle="modal" data-target="#modalUsuarios">Detalles <span class="glyphicon glyphicon-search" ></span></a>
+ 										</td>
+ 										<td>
+ 											<a href="" class="accion delete"><span class="glyphicon glyphicon-remove"></span></a>
+ 											<a href="" class="accion edit" data-toggle="modal" data-target="#modalEditUsuarios"><span class="glyphicon glyphicon-pencil"></span></a>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td>1</td>
+ 										<td>lorem</td>
+ 										<td>lorem</td>
+ 										<td>media</td>
+ 										<td>
+ 											<a href="">Detalles <span class="glyphicon glyphicon-search"></span></a>
+ 										</td>
+ 										<td>
+ 											<a href="" class="accion delete"><span class="glyphicon glyphicon-remove"></span></a>
+ 											<a href="" class="accion edit"><span class="glyphicon glyphicon-pencil"></span></a>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td>1</td>
+ 										<td>lorem</td>
+ 										<td>lorem</td>
+ 										<td>media</td>
+ 										<td>
+ 											<a href="">Detalles <span class="glyphicon glyphicon-search"></span></a>
+ 										</td>
+ 										<td>
+ 											<a href="" class="accion delete"><span class="glyphicon glyphicon-remove"></span></a>
+ 											<a href="" class="accion edit"><span class="glyphicon glyphicon-pencil"></span></a>
+ 										</td>
+ 									</tr>
+ 								</tbody>
+ 							</table>
+ 						</div>
+ 					<!-- Fin caja del crud -->
+ 				</div>	
+    		</div>
   		</div>
+  		<!-- final la ventana para la administracion de grupos -->
 	</div>
 
 	<!-- Final Contenedores de los tabs de bootstrap -->
@@ -402,5 +498,13 @@
 	<!-- archivos de Javascript-->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('.table').DataTable();
+		} );
+	</script>
+	<script type="text/javascript" src="js/acciones.js"></script>
 </body>
 </html>
